@@ -199,6 +199,7 @@ minY
             canvas.draw(new Line2D.Double(shiftPoint(center,0,-9),shiftPoint(center,9,0)));
             canvas.draw(new Line2D.Double(shiftPoint(center,9,0),shiftPoint(center,0,9)));
             canvas.draw(new Line2D.Double(shiftPoint(center,0,9),shiftPoint(center,-9,0)));
+
 /* Эллипс будет задаваться посредством указания координат его центра
 и угла прямоугольника, в который он вписан */
 // Центр - в точке (x,y)
@@ -239,6 +240,10 @@ minY
 // Замкнуть треугольник стрелки
             arrow.closePath();
             canvas.draw(arrow); // Нарисовать стрелку
+            Rectangle2D centerBounds = axisFont.getStringBounds("0", context);
+            Point2D.Double centerLabelPos = xyToPoint(0, 0);
+            canvas.drawString("0", (float)centerLabelPos.getX() + 10,
+                    (float)(centerLabelPos.getY() - centerBounds.getY()));
             canvas.fill(arrow); // Закрасить стрелку
 // Нарисовать подпись к оси Y
 // Определить, сколько места понадобится для надписи "y"
